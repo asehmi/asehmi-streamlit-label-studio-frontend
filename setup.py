@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="streamlit-label-studio-frontend",
-    version="0.0.1",
+    version="0.0.2",
     author="",
     author_email="",
     description="A Streamlit component integrating Label Studio Frontend in Streamlit applications",
@@ -12,8 +12,8 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     include_package_data=True,
     classifiers=[],
-    python_requires=">=3.6",
+    python_requires=">=3.10",
     install_requires=[
-        "streamlit >= 1.10.0",
+        "streamlit >= 1.35.0",
     ],
 )

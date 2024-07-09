@@ -1,3 +1,10 @@
 {
-    "git.ignoreLimitWarning": true
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+  "search.useIgnoreFiles": true,
+  "docwriter.style": "Auto-detect",
+  "python.analysis.typeCheckingMode": "off",
+  "python.defaultInterpreterPath": "C:\\ProgramData\\Anaconda3\\python.exe",
+  "terminal.integrated.defaultProfile.windows": "Command Prompt",
 }

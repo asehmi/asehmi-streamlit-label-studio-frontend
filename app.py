@@ -6,16 +6,8 @@ from frontend import st_label_studio
 from app_configs_builder import get_app_config
 
 # --------------------------------------------------------------------------------
-# Set Streamlit page style
 
 st.set_page_config(layout='wide')
-
-from style import set_page_container_style
-set_page_container_style(
-    max_width = 1500, max_width_100_percent = False,
-    padding_top = 30, padding_right = 0, padding_left = 0, padding_bottom = 0,
-    color = 'black', background_color = 'white',
-)
 
 # --------------------------------------------------------------------------------
 
@@ -45,11 +37,6 @@ def image_text_html(image, text, image_style=None, text_style=None):
     return image_text_html
 
 # --------------------------------------------------------------------------------
-
-import streamlit_debug
-streamlit_debug.set(flag=False, wait_for_client=True, host='localhost', port=6789)
-
-# -----------------------------------------------------------------------------
 
 empty_results_data = {
     'value': {},
@@ -101,7 +88,7 @@ def refresh_state(task_config_name=None):
     user, interfaces, task_configs = get_app_config_cached(unroll=True)
 
     # Default to the name of first config
-    if task_config_name == None:
+    if task_config_name is None:
         task_config_name = [tc['name'] for tc in task_configs][0]
 
     # Now choose the matching task config
@@ -145,7 +132,7 @@ def run_component(name, props):
         return None
 
 def handle_event(value):
-    if value == None or (not 'Annotation' in value['event']):
+    if value is None or ('Annotation' not in value['event']):
         return
 
     # TODO: generate tables for other types
@@ -336,8 +323,8 @@ def main():
 
 def about():
     st.sidebar.markdown('---')
-    st.sidebar.info('(c) 2023. CloudOpti Ltd. All rights reserved.')
-    st.sidebar.image('./images/a12i_logo.png', width=120, output_format='png')
+    st.sidebar.info('(c) 2024. CloudOpti Ltd. All rights reserved.')
+    st.sidebar.image('./images/a12i_logo.png', output_format='png')
 
 def references():
     st.sidebar.markdown('---')

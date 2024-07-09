@@ -68,7 +68,7 @@
                     "predictions": [],
                     "id": 1,
                     "data": {
-                        "image": "https://htx-misc.s3.amazonaws.com/opensource/label-studio/examples/images/nick-owuor-astro-nic-visuals-wDifg5xc9Z4-unsplash.jpg"
+                        "image": "https://htx-pub.s3.us-east-1.amazonaws.com/examples/images/nick-owuor-astro-nic-visuals-wDifg5xc9Z4-unsplash.jpg"
                     }
                 }
             }
@@ -89,10 +89,10 @@
             "description": "Bounding Box Image Annotation Example",
             "annotation_type": "image",
             "config": {
-                "url": "https://raw.githubusercontent.com/heartexlabs/label-studio-frontend/v1.4.0/examples/image_bbox/config.xml" 
+                "url": "https://raw.githubusercontent.com/HumanSignal/label-studio/develop/web/libs/editor/src/examples/image_bbox/config.xml" 
             },
             "task": { 
-                "url": "https://raw.githubusercontent.com/heartexlabs/label-studio-frontend/v1.4.0/examples/image_bbox/tasks.json" 
+                "url": "https://raw.githubusercontent.com/HumanSignal/label-studio/develop/web/libs/editor/src/examples/image_bbox/tasks.json" 
             }
         },
         {
@@ -100,10 +100,10 @@
             "description": "Ellipse Image Annotation Example",
             "annotation_type": "image",
             "config": { 
-                "url": "https://raw.githubusercontent.com/heartexlabs/label-studio-frontend/v1.4.0/examples/image_ellipses/config.xml" 
+                "url": "https://raw.githubusercontent.com/HumanSignal/label-studio/develop/web/libs/editor/src/examples/image_ellipses/config.xml" 
             },
             "task": { 
-                "url": "https://raw.githubusercontent.com/heartexlabs/label-studio-frontend/v1.4.0/examples/image_ellipses/tasks.json" 
+                "url": "https://raw.githubusercontent.com/HumanSignal/label-studio/develop/web/libs/editor/src/examples/image_ellipses/tasks.json" 
             }
         },
         {
@@ -111,21 +111,32 @@
             "description": "Key Points Image Annotation Example",
             "annotation_type": "image",
             "config": { 
-                "url": "https://raw.githubusercontent.com/heartexlabs/label-studio-frontend/v1.4.0/examples/image_keypoints/config.xml" 
+                "url": "https://raw.githubusercontent.com/HumanSignal/label-studio/develop/web/libs/editor/src/examples/image_keypoints/config.xml" 
             },
             "task": { 
-                "url": "https://raw.githubusercontent.com/heartexlabs/label-studio-frontend/v1.4.0/examples/image_keypoints/tasks.json" 
+                "url": "https://raw.githubusercontent.com/HumanSignal/label-studio/develop/web/libs/editor/src/examples/image_keypoints/tasks.json" 
             }
         },
         {
-            "name": "Multi Label Example",
+            "name": "Image Multi Label Example",
             "description": "Multi Label Image Annotation Example",
             "annotation_type": "image",
             "config": { 
-                "url": "https://raw.githubusercontent.com/heartexlabs/label-studio-frontend/v1.4.0/examples/image_multilabel/config.xml" 
+                "url": "https://raw.githubusercontent.com/HumanSignal/label-studio/develop/web/libs/editor/src/examples/image_multilabel/config.xml" 
             },
             "task": { 
-                "url": "https://raw.githubusercontent.com/heartexlabs/label-studio-frontend/v1.4.0/examples/image_multilabel/tasks.json" 
+                "url": "https://raw.githubusercontent.com/HumanSignal/label-studio/develop/web/libs/editor/src/examples/image_multilabel/tasks.json" 
+            }
+        },
+        {
+            "name": "Named Entity Example",
+            "description": "Named Entity Example",
+            "annotation_type": "ner",
+            "config": { 
+                "url": "https://raw.githubusercontent.com/HumanSignal/label-studio/develop/web/libs/editor/src/examples/named_entity/config.xml" 
+            },
+            "task": { 
+                "url": "https://raw.githubusercontent.com/HumanSignal/label-studio/develop/web/libs/editor/src/examples/named_entity/tasks.json" 
             }
         },
         {
@@ -133,10 +144,10 @@
             "description": "Rich Text HTML Annotation Example",
             "annotation_type": "text",
             "config": { 
-                "url": "https://raw.githubusercontent.com/heartexlabs/label-studio-frontend/master/examples/rich_text_html/config.xml" 
+                "url": "https://raw.githubusercontent.com/HumanSignal/label-studio/develop/web/libs/editor/src/examples/rich_text_html/config.xml" 
             },
             "task": { 
-                "url": "https://raw.githubusercontent.com/heartexlabs/label-studio-frontend/master/examples/rich_text_html/tasks.json" 
+                "url": "https://raw.githubusercontent.com/HumanSignal/label-studio/develop/web/libs/editor/src/examples/rich_text_html/tasks.json" 
             }
         },
         {
@@ -144,21 +155,10 @@
             "description": "Rich Text Plain Annotation Example",
             "annotation_type": "ner",
             "config": { 
-                "url": "https://raw.githubusercontent.com/heartexlabs/label-studio-frontend/master/examples/rich_text_plain/config.xml" 
+                "url": "https://raw.githubusercontent.com/HumanSignal/label-studio/develop/web/libs/editor/src/examples/rich_text_plain/config.xml" 
             },
             "task": { 
-                "url": "https://raw.githubusercontent.com/heartexlabs/label-studio-frontend/master/examples/rich_text_plain/tasks.json" 
-            }
-        },
-        {
-            "name": "Audio Classification Example",
-            "description": "Audio Classification Example",
-            "annotation_type": "audio_classification",
-            "config": { 
-                "url": "https://raw.githubusercontent.com/heartexlabs/label-studio-frontend/master/examples/audio_classification/config.xml" 
-            },
-            "task": { 
-                "url": "https://raw.githubusercontent.com/heartexlabs/label-studio-frontend/master/examples/audio_classification/tasks.json" 
+                "url": "https://raw.githubusercontent.com/HumanSignal/label-studio/develop/web/libs/editor/src/examples/rich_text_plain/tasks.json" 
             }
         },
         {
@@ -166,10 +166,43 @@
             "description": "Audio Regions Example",
             "annotation_type": "audio_regions",
             "config": { 
-                "url": "https://raw.githubusercontent.com/heartexlabs/label-studio-frontend/master/examples/audio_regions/config.xml" 
+                "url": "https://raw.githubusercontent.com/HumanSignal/label-studio/develop/web/libs/editor/src/examples/audio_regions/config.xml" 
             },
             "task": { 
-                "url": "https://raw.githubusercontent.com/heartexlabs/label-studio-frontend/master/examples/audio_regions/tasks.json" 
+                "url": "https://raw.githubusercontent.com/HumanSignal/label-studio/develop/web/libs/editor/src/examples/audio_regions/tasks.json" 
+            }
+        },
+        {
+            "name": "Dialog Analysis Example",
+            "description": "Dialog Analysis",
+            "annotation_type": "dialogue_analysis",
+            "config": { 
+                "url": "https://raw.githubusercontent.com/HumanSignal/label-studio/develop/web/libs/editor/src/examples/dialogue_analysis/config.xml" 
+            },
+            "task": { 
+                "url": "https://raw.githubusercontent.com/HumanSignal/label-studio/develop/web/libs/editor/src/examples/dialogue_analysis/tasks.json" 
+            }
+        },
+        {
+            "name": "Image Polygons Example",
+            "description": "Image Polygons Example",
+            "annotation_type": "image_polygons",
+            "config": { 
+                "url": "https://raw.githubusercontent.com/HumanSignal/label-studio/develop/web/libs/editor/src/examples/image_polygons/config.xml" 
+            },
+            "task": { 
+                "url": "https://raw.githubusercontent.com/HumanSignal/label-studio/develop/web/libs/editor/src/examples/image_polygons/tasks.json" 
+            }
+        },
+        {
+            "name": "Image Segmentation Example",
+            "description": "Image Segmentation Example",
+            "annotation_type": "image_segmentation",
+            "config": { 
+                "url": "https://raw.githubusercontent.com/HumanSignal/label-studio/develop/web/libs/editor/src/examples/image_segmentation/config.xml" 
+            },
+            "task": { 
+                "url": "https://raw.githubusercontent.com/HumanSignal/label-studio/develop/web/libs/editor/src/examples/image_segmentation/tasks.json" 
             }
         },
         {
@@ -177,10 +210,10 @@
             "description": "Video Annotation Example",
             "annotation_type": "video",
             "config": { 
-                "url": "https://raw.githubusercontent.com/heartexlabs/label-studio-frontend/master/examples/video/config.xml" 
+                "url": "https://raw.githubusercontent.com/HumanSignal/label-studio/develop/web/libs/editor/src/examples/video/config.xml" 
             },
             "task": { 
-                "url": "https://raw.githubusercontent.com/heartexlabs/label-studio-frontend/master/examples/video/tasks.json" 
+                "url": "https://raw.githubusercontent.com/HumanSignal/label-studio/develop/web/libs/editor/src/examples/video/tasks.json" 
             }
         }
     ]

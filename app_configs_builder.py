@@ -2,7 +2,10 @@ import io
 import requests
 import json
 
-# Loading the task configs from the `task_configs.json` file.
+# NOTE: The app configs are mostly taken from https://github.com/HumanSignal/label-studio/tree/develop/web/libs/editor/src/examples
+# You can find more examples there and add them to `app_configs.json`
+
+# Loading the task configs from the `app_configs.json` file.
 # When uroll=True, configs with a list of tasks will be expanded into multiple
 # configs with one task each. (I have not been able to make LSF accept a
 # list of tasks, so I send each task individually.)

@@ -2,10 +2,10 @@
 
 _**A Streamlit component integrating Label Studio Frontend in Streamlit applications**_
 
-    date: "2023-03-14"
+    date: "2024-07-09"
     author:
         name: "Arvindra Sehmi"
-        url: "https://www.linkedin.com/in/asehmi/"
+        url: "https://www.linkedin.com/in/asehmi/" | "https://sehmi-conscious.medium.com/about"
         mail: "vin [at] thesehmis.com"
         avatar: "https://twitter.com/asehmi/profile_image?size=original"
     related: [Introduction to Streamlit and Streamlit Components](https://auth0.com/blog/introduction-to-streamlit-and-streamlit-components/)
@@ -20,6 +20,10 @@ This Streamlit application leverages Streamlit Components extensibilty with the 
 [Introduction to Streamlit and Streamlit Components](https://auth0.com/blog/introduction-to-streamlit-and-streamlit-components/). Using _Component Zero_
 as a template it was straight-forward to take the code snippet in Label Studio's [Frontend integration guide](https://labelstud.io/guide/frontend.html#Frontend-integration-guide)
 and build the Streamlit component.
+
+### Deprecation warning
+
+The [standalone LSF application](https://github.com/HumanSignal/label-studio-frontend) has been deprecated. Hence, I'm not sure if the package repository is being updated from the main LS GitHub repository. Nevertheless, I updated the `app_config.json` file to point to the newer examples, and added **image polygon** and **image segmentation** examples.
 
 ### Try the demo app yourself
 
@@ -109,7 +113,7 @@ Below are some examples:
                     "predictions": [],
                     "id": 1,
                     "data": {
-                        "image": "https://htx-misc.s3.amazonaws.com/opensource/label-studio/examples/images/nick-owuor-astro-nic-visuals-wDifg5xc9Z4-unsplash.jpg"
+                        "image": "https://htx-pub.s3.us-east-1.amazonaws.com/examples/images/nick-owuor-astro-nic-visuals-wDifg5xc9Z4-unsplash.jpg"
                     }
                 }
             }
@@ -130,10 +134,10 @@ Below are some examples:
             "description": "Bounding Box Image Annotation Example",
             "annotation_type": "image",
             "config": {
-                "url": "https://raw.githubusercontent.com/heartexlabs/label-studio-frontend/master/examples/image_bbox/config.xml" 
+                "url": "https://raw.githubusercontent.com/HumanSignal/label-studio/develop/web/libs/editor/src/examples/image_bbox/config.xml" 
             },
             "task": { 
-                "url": "https://raw.githubusercontent.com/heartexlabs/label-studio-frontend/master/examples/image_bbox/tasks.json" 
+                "url": "https://raw.githubusercontent.com/HumanSignal/label-studio/develop/web/libs/editor/src/examples/image_bbox/tasks.json" 
             }
         }
     ]
@@ -217,7 +221,10 @@ Below are some examples:
         ],
         "id": 1,
         "data": {
-            "image": "https://htx-misc.s3.amazonaws.com/opensource/label-studio/examples/images/history-in-hd-e5eDHbmHprg-unsplash.jpg"
+            "image": [
+                "https://htx-pub.s3.us-east-1.amazonaws.com/examples/images/nick-owuor-astro-nic-visuals-wDifg5xc9Z4-unsplash.jpg",
+                "https://htx-pub.s3.us-east-1.amazonaws.com/examples/images/nick-owuor-astro-nic-visuals-wDifg5xc9Z4-unsplash.jpg"
+            ]
         }
     },
     {
@@ -225,25 +232,19 @@ Below are some examples:
         "predictions": [],
         "id": 2,
         "data": {
-            "image": "https://htx-misc.s3.amazonaws.com/opensource/label-studio/examples/images/history-in-hd-e5eDHbmHprg-unsplash.jpg"
-        }
-    },
-    {
-        "annotations": [],
-        "predictions": [],
-        "id": 3,
-        "data": {
-            "image": "https://htx-misc.s3.amazonaws.com/opensource/label-studio/examples/images/soroush-karimi-crjPrExvShc-unsplash.jpg"
+            "image": "https://htx-pub.s3.us-east-1.amazonaws.com/examples/images/nick-owuor-astro-nic-visuals-wDifg5xc9Z4-unsplash.jpg"
         }
     }
 ]
 ```
 
-More configurations can be found in the official [Label Studio examples](https://github.com/heartexlabs/label-studio-frontend/tree/master/examples)
+More configurations can be found in the official [Label Studio examples](https://github.com/HumanSignal/label-studio/tree/develop/web/libs/editor/src/examples)
 
 ## Local image annotations
 
-Because of the way Streamlit references the base directory of components, local images must be stored relative to the component's base. The Label Studio Frontend component base is `./frontend`, so images should be placed in `./frontend/images`, and referenced in tasks from the relative path `./images`. 
+Because of the way Streamlit references the base directory of components, local images must be stored relative to the component's base.
+
+**NOTE:** The Label Studio Frontend component base is `./frontend`, so images should be placed in `./frontend/images`, and referenced in tasks from the relative path `./images`. 
 
 For example:
 
@@ -272,11 +273,7 @@ For example:
 
 ## Debugging
 
-If you use vs-code, then I have included my `.vscode` launch settings. Turn on remote debugging in `app.py` by setting the debug flag in the statement below to `True`. You can adjust the `port` setings here too, but also remember to do the same in `launch.json`.
-
-```python
-streamlit_debug.set(flag=False, wait_for_client=True, host='localhost', port=6789)
-```
+If you use vs-code, then I have included my `.vscode` launch settings. You can adjust the `--server.port` settings for Streamlit in `launch.json`.
 
 A major benefit I found building a static HTML Streamlit component was that it can be debugged very easily using a browser's developer tools. This is in contrast to the obscure debugging experience you encounter using more sophisticated web frameworks.
 
