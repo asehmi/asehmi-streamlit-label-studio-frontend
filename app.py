@@ -1,6 +1,7 @@
 import base64
 
 import streamlit as st
+from streamlit import session_state as state
 
 from frontend import st_label_studio
 from app_configs_builder import get_app_config
@@ -50,7 +51,6 @@ empty_results_data = {
     'relations': [],
 }
 
-state = st.session_state
 if 'user' not in state:
     state.user = None
 if 'interfaces' not in state:
@@ -65,21 +65,6 @@ if 'task_config_names' not in state:
     state.task_config_names = []
 if 'results_data' not in state:
     state.results_data = empty_results_data
-
-# -----------------------------------------------------------------------------
-
-# !! Must be the FINAL thing you run in the app's control flow !!
-# Causes all updated values to that point to be sent back to the component.
-# (Note, this is a HACK to component state to sync given Streamlit's execution semantics)
-def sync_component_state_with_rerun():
-    if '_sync_' not in state:
-        state._sync_ = True
-
-    if state._sync_:
-        state._sync_ = False
-        st.experimental_rerun()
-    else:
-        state._sync_ = True
 
 # -----------------------------------------------------------------------------
 
@@ -260,45 +245,46 @@ def main():
     if not (state.user and state.interfaces and state.config and state.task):
         refresh_state()
 
-    st.sidebar.image('./images/opossum.png', width=140, output_format='png')
-    st.sidebar.subheader('Label Studio Tasks')
+    with st.sidebar:
+        st.image('./images/opossum.png', width=140, output_format='png')
+        st.subheader('Label Studio Tasks')
 
-    task_config_name = st.sidebar.selectbox(
-        'Choose a task configuration',
-        options=state.task_config_names,
-        index=0, key='task_config_name_selector',
-        on_change=_reconfigure_state_cb,
-    )
-
-    peer_task_config_names = [tc['name'] for tc in state.task_configs if task_config_name in tc['name']]
-
-    if len(peer_task_config_names) > 1:
-        c1, c2 = st.sidebar.columns([1,19])
-        c1.write('➕')
-        with c2:
-            task_config_name = st.selectbox(
-                'Choose a task',
-                options=peer_task_config_names,
-                index=0, key='peer_task_config_name_selector',
-                on_change=_reconfigure_peer_task_state_cb,
-                disabled=(len(peer_task_config_names) == 1),
-                help='This configuration has multiple tasks. Please choose one.'
-            )
-
-    show_annotation_data = st.sidebar.empty()
-    show_config_and_task_info = st.sidebar.empty()
-
-    st.sidebar.markdown('---')
-    with st.sidebar.expander('⚙️ Settings', expanded=False):
-        st.info('If the viewport area is blank, increase its height 📐 or click the button 🔁 below to force a reload.')
-        height = st.number_input(
-            '📐 Adjust viewport height',
-            min_value=500, max_value=2000, value=1300, step=100,
+        task_config_name = st.selectbox(
+            'Choose a task configuration',
+            options=state.task_config_names,
+            index=0, key='task_config_name_selector',
+            on_change=_reconfigure_state_cb,
         )
-        st.button('🔁 Label Studio reload')
-        if st.button('🔥 Clear config cache', help='Allows refresh of application task configuration.'):
-            get_app_config_cached.clear()
-            st.experimental_rerun()
+
+        peer_task_config_names = [tc['name'] for tc in state.task_configs if task_config_name in tc['name']]
+
+        if len(peer_task_config_names) > 1:
+            c1, c2 = st.columns([1,19])
+            c1.write('➕')
+            with c2:
+                task_config_name = st.selectbox(
+                    'Choose a task',
+                    options=peer_task_config_names,
+                    index=0, key='peer_task_config_name_selector',
+                    on_change=_reconfigure_peer_task_state_cb,
+                    disabled=(len(peer_task_config_names) == 1),
+                    help='This configuration has multiple tasks. Please choose one.'
+                )
+
+        show_annotation_data = st.empty()
+        show_config_and_task_info = st.empty()
+
+        st.markdown('---')
+        with st.expander('⚙️ Settings', expanded=False):
+            st.info('If the viewport area is blank, increase its height 📐 or click the button 🔁 below to force a reload.')
+            height = st.number_input(
+                '📐 Adjust viewport height',
+                min_value=500, max_value=2000, value=1300, step=100,
+            )
+            st.button('🔁 Label Studio reload')
+            if st.button('🔥 Clear config cache', help='Allows refresh of application task configuration.'):
+                get_app_config_cached.clear()
+                st.rerun()
 
     c1, _ = st.columns([1,1.1])
     with c1:
@@ -322,21 +308,23 @@ def main():
 # -----------------------------------------------------------------------------
 
 def about():
-    st.sidebar.markdown('---')
-    st.sidebar.info('(c) 2024. CloudOpti Ltd. All rights reserved.')
-    st.sidebar.image('./images/a12i_logo.png', output_format='png')
+    with st.sidebar:
+        st.markdown('---')
+        st.info('(c) 2024. CloudOpti Ltd. All rights reserved.')
+        st.image('./images/a12i_logo.png', output_format='png')
 
 def references():
-    st.sidebar.markdown('---')
-    st.sidebar.markdown('''
-        #### Label Studio resources
-        - [Website](https://labelstud.io/)
-        - [Frontend docs](https://labelstud.io/guide/frontend.html)
-        - [Frontend repo](https://github.com/heartexlabs/label-studio-frontend)
-        - [Backend repo](https://github.com/heartexlabs/label-studio)
-        - [v1.4.0 on NPM](https://www.npmjs.com/package/@heartexlabs/label-studio)
-        - [Playground](https://labelstud.io/playground/)
-    ''')
+    with st.sidebar:
+        st.markdown('---')
+        st.markdown('''
+            #### Label Studio resources
+            - [Website](https://labelstud.io/)
+            - [Frontend docs](https://labelstud.io/guide/frontend.html)
+            - [Frontend repo (deprecated)](https://github.com/heartexlabs/label-studio-frontend)
+            - [Backend repo](https://github.com/heartexlabs/label-studio)
+            - [v1.8.0 on NPM](https://www.npmjs.com/package/@heartexlabs/label-studio)
+            - [Playground](https://labelstud.io/playground/)
+        ''')
 
 # -----------------------------------------------------------------------------
 
