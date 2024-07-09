@@ -21,7 +21,7 @@ This Streamlit application leverages Streamlit Components extensibilty with the 
 as a template it was straight-forward to take the code snippet in Label Studio's [Frontend integration guide](https://labelstud.io/guide/frontend.html#Frontend-integration-guide)
 and build the Streamlit component.
 
-### <span style="color:crimson;">Deprecation warning</span>
+### ⚠️ Deprecation warning
 
 The [standalone LSF application](https://github.com/HumanSignal/label-studio-frontend) has been deprecated. Hence, I'm not sure if the package repository is being updated from the main LS GitHub repository. Nevertheless, I updated the `app_config.json` file to point to the newer examples, and added **image polygon** and **image segmentation** examples.
 
