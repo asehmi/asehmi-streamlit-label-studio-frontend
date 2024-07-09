@@ -25,6 +25,8 @@ and build the Streamlit component.
 
 The [standalone LSF application](https://github.com/HumanSignal/label-studio-frontend) has been deprecated. Hence, I'm not sure if the package repository is being updated from the main LS GitHub repository. Nevertheless, I updated the `app_config.json` file to point to the newer examples, and added **image polygon** and **image segmentation** examples.
 
+Moving forward, you'd have to create a build of the editor (i.e. LSF) from the main LS repo, and point to these build JS and CSS files instead of taking them from the package repo.
+
 ### Try the demo app yourself
 
 The application can be seen running in the Streamlit Cloud at the link below:
